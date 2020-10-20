@@ -41,7 +41,7 @@
     name: 'MainPage',
     data () {
       return {
-        appUrl: 'https://wx.qq.com/?lang=en_US', //WeChat
+        appUrl: 'https://wx.qq.com/?lang=en_US', // WeChat
         appPath: null,
         appWidth: 0,
         appHeight: 0
