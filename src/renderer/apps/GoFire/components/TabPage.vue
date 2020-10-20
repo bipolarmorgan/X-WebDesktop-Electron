@@ -134,7 +134,7 @@
       <div class="tool-item" @click.stop.prevent="handleAction('forward')">
         <Icon type="android-arrow-forward"></Icon>
       </div>
-      <!-- 刷新 -->
+      <!-- refresh -->
       <div class="tool-item" @click.stop.prevent="handleAction('refresh')">
         <Icon type="android-refresh"></Icon>
       </div>
@@ -146,7 +146,7 @@
       <div class="input">
         <Input
           v-model="urlMap[currentTabIndex]"
-          placeholder="请输入一个地址，回车访问"
+          placeholder="please enter an 一个地址，回车访问"
           style="width: 300px"
           :autofocus="true"
           autocomplete="on"
@@ -194,7 +194,7 @@
           case 'tabClose':
             // 删除相应tab的url
             delete _t.urlMap[val]
-            // 关闭tab页
+            // shut downtab页
             _t.$store.commit('Apps/GoFire/tab/close', val)
             break
           case 'newTab':
@@ -221,7 +221,7 @@
             break
           case 'refresh':
             if (_t.currentTab && _t.currentTab.url) {
-              // 刷新tab页
+              // refreshtab页
               _t.$utils.bus.$emit('Apps/GoFire/tab/refresh', {
                 index: _t.currentTabIndex,
                 info: {

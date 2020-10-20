@@ -6,33 +6,33 @@
 import Api from '../api'
 
 export default {
-  // 获取账号列表
+  // 获取account number列表
   'account/list': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.getAccountList(payload)
     return res
   },
-  // 添加账号
+  // 添加account number
   'account/add': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.doAddAccount(payload)
     return res
   },
-  // 删除账号
+  // 删除account number
   'account/remove': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.doRemoveAccount(payload)
     return res
   },
-  // 编辑账号
+  // 编辑account number
   'account/edit': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.doEditAccount(payload)
     return res
   },
   // 获取所有的app
   'Apps/all': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.getAllApps(payload)
     return res
   }

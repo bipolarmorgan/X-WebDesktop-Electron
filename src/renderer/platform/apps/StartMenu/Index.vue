@@ -344,7 +344,7 @@
                 <h2>{{ userInfo.name }}</h2>
               </div>
               <div class="info-action-item">
-                个人中心
+                Personal center
               </div>
               <div class="info-action-item">
                 My Apps
@@ -352,7 +352,7 @@
             </div>
             <div class="info-action-group">
               <div class="info-action-item">
-                系统设置
+                System settings
               </div>
             </div>
             <div class="info-action-group">
@@ -362,7 +362,7 @@
             </div>
           </div>
           <div class="info-btn">
-            <Button class="info-btn-item" type="ghost" long @click="doLogout">退出</Button>
+            <Button class="info-btn-item" type="ghost" long @click="doLogout">Logout</Button>
           </div>
           <div class="info-author" v-if="$Config.System.author">
             Author：
@@ -391,7 +391,7 @@
           text: 'admin'
         },
         isMouseDown: false,
-        // 开始菜单窗口样式
+        // Start menu window style
         menuBoxStyle: {}
       }
     },
@@ -416,7 +416,7 @@
       },
       doLogout: function () {
         let _t = this
-        // TODO 执行退出
+        // TODO 执行Logout
         sessionStorage.clear()
         Object.keys(_t.$Cookies.get()).forEach(function (cookie) {
           _t.$Cookies.remove(cookie)
@@ -431,7 +431,7 @@
         let appInfo = {...info}
         // 广播事件 触发window事件 open
         _t.$utils.bus.$emit('platform/window/trigger', {
-          // 通过开始菜单列表打开
+          // 通过开始菜单列表turn on
           action: 'openByStartMenuList',
           data: {
             appInfo: appInfo

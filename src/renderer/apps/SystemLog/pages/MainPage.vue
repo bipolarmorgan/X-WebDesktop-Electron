@@ -14,7 +14,7 @@
 <template>
   <div class="main-page">
     <SearchLogs></SearchLogs>
-    <!-- 日志详情 -->
+    <!-- Log details -->
     <DetailLog></DetailLog>
   </div>
 </template>

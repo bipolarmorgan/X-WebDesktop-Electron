@@ -98,8 +98,8 @@
         _t.loadStatus = 'loading'
         let appName = _t.info.app_name || _t.info.config.app.name
         let path = ''
-        // TODO 判断当前操作是install || uninstall || openApp
-        // 常规打开
+        // TODO 判断当前operating是install || uninstall || openApp
+        // 常规turn on
         let handler = function (path) {
           // 动态加载组件
           require.ensure([], (require) => {

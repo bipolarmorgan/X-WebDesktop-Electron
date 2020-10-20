@@ -1,6 +1,6 @@
 /**
 * Created by OXOYO on 2017/7/5.
-* 账号管理 主内容组件
+* account number管理 主内容组件
 */
 
 <style scoped lang="less" rel="stylesheet/less">
@@ -25,15 +25,15 @@
 <template>
   <div class="main-page">
     <Tabs v-model="currentTab" class="main-tabs" @on-click="handleCurrentTab">
-      <Tab-pane label="查询" name="search" class="main-tab-pane">
+      <Tab-pane label="Inquire" name="search" class="main-tab-pane">
         <SearchAccount></SearchAccount>
       </Tab-pane>
       <Tab-pane label="新增" name="add" class="main-tab-pane">
-        <!-- 账号新增表单 -->
+        <!-- account number新增表单 -->
         <EditAccount action="add" v-if="currentTab === 'add'"></EditAccount>
       </Tab-pane>
       <Tab-pane label="编辑" name="edit" class="main-tab-pane">
-        <!-- 账号编辑表单 -->
+        <!-- account number编辑表单 -->
         <EditAccount action="edit" v-if="currentTab === 'edit'"></EditAccount>
       </Tab-pane>
     </Tabs>

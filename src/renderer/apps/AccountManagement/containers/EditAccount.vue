@@ -1,7 +1,7 @@
 /**
 * Created by OXOYO on 2017/7/18.
 *
-* 编辑账号 组件
+* 编辑account number 组件
 */
 
 <style scoped lang="less" rel="stylesheet/less">
@@ -16,11 +16,11 @@
     <Row>
       <Col span="12" v-if="!isCurrentEditAccountEmpty">
         <Form ref="accountForm" :model="formData" :rules="formRules" :label-width="80">
-          <Form-item label="账号" prop="account">
-            <Input v-model="formData.account" placeholder="请输入账号"></Input>
+          <Form-item label="account number" prop="account">
+            <Input v-model="formData.account" placeholder="please enter an account number"></Input>
           </Form-item>
-          <Form-item label="姓名" prop="name">
-            <Input v-model="formData.name" placeholder="请输入姓名"></Input>
+          <Form-item label="Name" prop="name">
+            <Input v-model="formData.name" placeholder="please enter a Name"></Input>
           </Form-item>
           <Form-item label="级别" prop="type">
             <Radio-group v-model="formData.type">
@@ -41,7 +41,7 @@
               multiple
               filterable
               placement="top"
-              placeholder="请选择要开启的应用"
+              placeholder="please choose a 要开启的应用"
             >
               <Option v-for="item in appsList" :value="item.id" :key="item.index">{{ item.title }}</Option>
             </Select>
@@ -83,14 +83,14 @@
           account: [
             {
               required: true,
-              message: '请填写账号',
+              message: 'Please fill out account number',
               trigger: 'blur'
             }
           ],
           name: [
             {
               required: true,
-              message: '请填写用户名',
+              message: 'Please fill out username',
               trigger: 'blur'
             }
           ],
@@ -110,7 +110,7 @@
         doSaveLoading: false,
         // 重置loading
         doResetLoading: false,
-        // 当前编辑账号是否为空标识
+        // 当前编辑account number是否为空标识
         isCurrentEditAccountEmpty: false
       }
     },
@@ -223,19 +223,19 @@
         // TODO 拉取应用列表
         let res = await _t.$store.dispatch('Apps/AccountManagement/Apps/all', payload)
         if (!res) {
-          _t.$Message.error('查询应用列表失败！')
+          _t.$Message.error('Inquire应用列表失败！')
           return
         } else if (res.status !== 200) {
           return
         }
         // 处理返回数据
         if (res.data.count === 0) {
-          _t.$Message.info('暂无数据！')
+          _t.$Message.info('No data！')
         }
 
         let resList = res.data.list || []
         if (resList.length) {
-          _t.$Message.success(res.msg || '查询应用列表成功！')
+          _t.$Message.success(res.msg || 'Inquire应用列表成功！')
         }
         _t.appsList = resList
       }
@@ -250,7 +250,7 @@
     },
     destroyed: function () {
       let _t = this
-      // 清空当前编辑的账号信息
+      // 清空当前编辑的account number信息
       _t.$store.commit('Apps/AccountManagement/currentEditAccount/update', {})
     }
   }

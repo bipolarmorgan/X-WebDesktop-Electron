@@ -265,7 +265,7 @@
             userId: _t.userId
           }
         }
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch('Apps/iChat/sendMessage', payload)
         if (!res || res.status !== 200) {
           _t.msgList.push({

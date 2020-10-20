@@ -87,7 +87,7 @@
         // 动态导入组件
         let components = {}
         console.groupCollapsed('COMPONENTS OR STORE LOAD ERROR::')
-        // FIXME 可以考虑通过接口获取 components 配置信息
+        // FIXME 可以考虑通过interface获取 components 配置信息
         for (let key in config.components) {
           let item = config.components[key]
           if (item.component) {
@@ -166,7 +166,7 @@
             }
           }
         }
-        // TODO 处理应用拖拽后相关操作
+        // TODO 处理应用拖拽后相关operating
         _t.$utils.bus.$emit('platform/desktop/right/click', tmpInfo)
       },
       // 桌面左键点击
@@ -194,7 +194,7 @@
                 type: 'refresh',
                 style: ''
               },
-              text: '刷新',
+              text: 'refresh',
               enable: true,
               action: {
                 type: 'bus',
@@ -207,7 +207,7 @@
                 type: 'arrow-expand',
                 style: ''
               },
-              text: '全屏',
+              text: 'full screen',
               enable: true,
               action: {
                 type: 'bus',
@@ -220,7 +220,7 @@
                 type: 'arrow-shrink',
                 style: ''
               },
-              text: '取消全屏',
+              text: 'Cancel full screen',
               enable: true,
               action: {
                 type: 'bus',
@@ -233,7 +233,7 @@
                 type: '',
                 style: ''
               },
-              text: '切换壁纸',
+              text: 'Switch wallpaper',
               enable: true,
               action: {
                 type: 'bus',
@@ -245,12 +245,12 @@
         // 广播事件
         _t.$utils.bus.$emit('platform/contextMenu/show', contextMenuInfo)
       },
-      // 处理系统刷新
+      // 处理系统refresh
       handlePlatformRefresh: function () {
         let _t = this
         // 判断用户是否登录
         if (_t.userInfo.isLogin) {
-          // 刷新用户应用数据
+          // refresh用户应用数据
           _t.$utils.bus.$emit('Admin/appData/refresh')
         } else {
           _t.$router.go(0)
@@ -265,7 +265,7 @@
         _t.handlePlatformRefresh()
       })
       _t.$utils.bus.$on('platform/fullScreen/open', function () {
-        // 全屏
+        // full screen
         let docElm = document.documentElement
         if (docElm.requestFullscreen) {
           docElm.requestFullscreen()
@@ -278,7 +278,7 @@
         }
       })
       _t.$utils.bus.$on('platform/fullScreen/close', function () {
-        // 退出全屏
+        // Logoutfull screen
         if (document.exitFullscreen) {
           document.exitFullscreen()
         } else if (document.mozCancelFullScreen) {

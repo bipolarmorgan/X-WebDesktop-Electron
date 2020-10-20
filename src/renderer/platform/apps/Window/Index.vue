@@ -210,7 +210,7 @@
         @mousedown.stop="onWindowMouseDown"
         @dblclick.stop.prevent="handleWindowSize(info.config.window.size === 'max' ? 'reset' : 'max')"
       >
-        {{ info.hasOwnProperty('action') ? (info.action === 'install' ? '安装：' : (info.action === 'uninstall' ? '卸载：' : '')) : '' }}
+        {{ info.hasOwnProperty('action') ? (info.action === 'install' ? '安装：' : (info.action === 'uninstall' ? 'Uninstall：' : '')) : '' }}
         {{ info.app_title || info.config.app.title }}
       </div>
       <div class="window-bar">
@@ -247,7 +247,7 @@
         >
           <Icon type="ios-browsers-outline"></Icon>
         </div>
-        <!-- 关闭 -->
+        <!-- shut down -->
         <div
           v-if="info.config.window.enableResize.includes('close')"
           class="window-bar-item"

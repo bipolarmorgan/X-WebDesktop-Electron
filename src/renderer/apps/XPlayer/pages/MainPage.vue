@@ -37,7 +37,7 @@
   >
     <VideoPlayer></VideoPlayer>
     <!--<DVideoPlayer></DVideoPlayer>-->
-    <!-- 打开视频 -->
+    <!-- turn on视频 -->
     <Upload
       class="open-video"
       v-show="isShow"
@@ -45,7 +45,7 @@
       accept="video/*"
       :before-upload="handleOpenVideo"
     >
-      <Button ref="openVideoBtn" class="open-btn" type="ghost" icon="ios-cloud-upload-outline">打开文件</Button>
+      <Button ref="openVideoBtn" class="open-btn" type="ghost" icon="ios-cloud-upload-outline">open a file</Button>
     </Upload>
   </div>
 </template>
@@ -86,7 +86,7 @@
                 type: '',
                 style: ''
               },
-              text: '打开文件',
+              text: 'open a file',
               enable: true,
               action: {
                 type: 'callback',

@@ -3,7 +3,7 @@
   "version": "3.0.3",
   "author": "OXOYO <zmn2007.hi@163.com>",
   "description": "The WebDesktop system based on Vue and Electron",
-  "license": null,
+  "license": "null",
   "main": "./dist/electron/main.js",
   "scripts": {
     "build": "node .electron-vue/build.js && electron-builder",

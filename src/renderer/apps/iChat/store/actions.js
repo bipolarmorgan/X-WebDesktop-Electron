@@ -7,7 +7,7 @@ import Api from '../api'
 
 export default {
   'sendMessage': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.doSendMessage(payload)
     return res
   }

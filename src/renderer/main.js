@@ -90,7 +90,7 @@ axiosInstance.interceptors.request.use((config) => {
   return Promise.reject(error)
 })
 axiosInstance.interceptors.response.use(function (response) {
-  // loading 进度条关闭
+  // loading 进度条shut down
   Vue.prototype.$Loading.finish()
   // 返回数据
   let resData = response && response.data ? response.data : response

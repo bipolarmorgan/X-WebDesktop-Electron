@@ -1,0 +1,9 @@
+version: 3.0.3
+files:
+  - url: x-webdesktop-electron-3.0.3-x86_64.AppImage
+    sha512: PLxxd+nTHu0YcBTmpw2yQ1kJb1NAxq3Gin/OOmiBf9TXJFFPqB+Hks2m8uK/EQKyeVDOgImTb8DrOLXra1Qcpw==
+    size: 58197093
+    blockMapSize: 60841
+path: x-webdesktop-electron-3.0.3-x86_64.AppImage
+sha512: PLxxd+nTHu0YcBTmpw2yQ1kJb1NAxq3Gin/OOmiBf9TXJFFPqB+Hks2m8uK/EQKyeVDOgImTb8DrOLXra1Qcpw==
+releaseDate: '2020-10-20T06:48:52.813Z'

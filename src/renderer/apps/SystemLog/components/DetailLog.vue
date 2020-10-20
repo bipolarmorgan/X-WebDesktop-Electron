@@ -1,7 +1,7 @@
 /**
 * Created by OXOYO on 2018/8/31.
 *
-* 日志详情
+* Log details
 */
 
 <style scoped lang="less" rel="stylesheet/less">
@@ -12,7 +12,7 @@
   <Modal
     class="detail-modal"
     v-model="isShowModal"
-    title="详情"
+    title="Details"
     :mask-closable="true"
     :closable="true"
     :width="900"
@@ -35,7 +35,7 @@
       </FormItem>
     </Form>
     <div slot="footer">
-      <Button type="primary" @click="handleCancel">关闭</Button>
+      <Button type="primary" @click="handleCancel">shut down</Button>
     </div>
   </Modal>
 </template>
@@ -47,7 +47,7 @@
       return {
         // 是否显示弹窗
         isShowModal: false,
-        // 详情
+        // Details
         detailInfo: {}
       }
     },
@@ -63,12 +63,12 @@
           })
         }, 0)
       },
-      // 关闭弹窗
+      // shut down弹窗
       handleCancel: function () {
         let _t = this
         // 清空备份数据
         _t.detailInfo = {}
-        // 关闭弹窗
+        // shut down弹窗
         _t.isShowModal = false
       }
     },

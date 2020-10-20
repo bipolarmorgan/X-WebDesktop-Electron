@@ -7,7 +7,7 @@ import Api from '../api'
 export default {
   // 登录
   'doSignIn': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.doSignIn(payload)
     return res
   }

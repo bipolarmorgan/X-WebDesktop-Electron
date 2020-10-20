@@ -1,10 +1,10 @@
 /**
 * Created by OXOYO on 2017/7/5.
-* 账号管理 查询组件
+* account number管理 Inquire组件
 */
 
 <style scoped lang="less" rel="stylesheet/less">
-  /* 查询面板 */
+  /* Inquire面板 */
   .search-panel {
 
     .search-form {
@@ -35,12 +35,12 @@
       <FormItem >
         <Input
           v-model="searchForm.keywords"
-          :placeholder="searchForm.filterType === 'account' ? '请输入账号' : '请输入姓名'"
+          :placeholder="searchForm.filterType === 'account' ? 'please enter an account number' : 'please enter a Name'"
           @on-enter.stop.prevent="doSearch"
         >
         <Select v-model="searchForm.filterType" slot="prepend" style="width: 80px">
-          <Option value="account">账号</Option>
-          <Option value="name">姓名</Option>
+          <Option value="account">account number</Option>
+          <Option value="name">Name</Option>
         </Select>
         </Input>
       </FormItem >
@@ -67,7 +67,7 @@
         </CheckboxGroup>
       </FormItem >
       <FormItem >
-        <Button type="primary" @click="doSearch">查询</Button>
+        <Button type="primary" @click="doSearch">Inquire</Button>
       </FormItem >
     </Form>
     <Table
@@ -124,11 +124,11 @@
             key: 'id'
           },
           {
-            title: '账号',
+            title: 'account number',
             key: 'account'
           },
           {
-            title: '用户名',
+            title: 'username',
             key: 'name'
           },
           {
@@ -204,7 +204,7 @@
           total: 0,
           pageSize: 10
         },
-        // 选中行信息
+        // Selected row information
         selectedRowData: []
       }
     },
@@ -217,16 +217,16 @@
       currentTab: function (val, oldVal) {
         let _t = this
         if (val === 'search') {
-          // TODO 更新账号列表
+          // TODO 更新account number列表
           _t.initAccountList()
         }
       }
     },
     methods: {
-      // 执行查询
+      // 执行Inquire
       doSearch: function (event) {
         let _t = this
-        // 查询用户列表
+        // Inquire用户列表
         _t.initAccountList()
         return false
       },
@@ -239,7 +239,7 @@
           total: 0,
           pageSize: 10
         }
-        // 处理查询条件
+        // 处理Inquire条件
         if (isResetSearchForm) {
           _t.searchForm = {
             keywords: '',
@@ -248,12 +248,12 @@
             userType: [0, 1]
           }
         }
-        // 调接口，初始化数据
+        // 调interface，初始化数据
         _t.getAccountList()
       },
       getAccountList: async function () {
         let _t = this
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch('Apps/AccountManagement/account/list', {
           currentPage: _t.pageInfo.currentPage,
           pageSize: _t.pageInfo.pageSize,
@@ -263,23 +263,23 @@
           userType: _t.searchForm.userType
         })
         if (!res) {
-          _t.$Message.error('查询用户列表失败！')
+          _t.$Message.error('Inquire用户列表失败！')
           return
         } else if (res.status !== 200) {
           return
         }
         // 处理返回数据
         if (res.data.count && res.data.list && res.data.list.length) {
-          _t.$Message.success(res.msg || '查询账号列表成功！')
+          _t.$Message.success(res.msg || 'Inquireaccount number列表成功！')
         } else {
-          _t.$Message.info('暂无数据！')
+          _t.$Message.info('No data！')
         }
         // 更新表格数据
         _t.tableData = res.data.list || []
         // 更新分页信息
         _t.pageInfo.total = res.data.count || 0
       },
-      // 切换账号状态
+      // 切换account number状态
       switchAccountStatus: async function (index, oldStatus) {
         let _t = this
         // 处理参数
@@ -314,14 +314,14 @@
         let _t = this
         // 更新当前页
         _t.pageInfo.currentPage = pageNum
-        // 调接口，初始化数据
+        // 调interface，初始化数据
         _t.getAccountList()
       },
       pageSizeChange: function (pageSize) {
         let _t = this
         // 更新分页量
         _t.pageInfo.pageSize = pageSize
-        // 调接口，初始化数据
+        // 调interface，初始化数据
         _t.getAccountList()
       },
       doRemove: function () {
@@ -333,12 +333,12 @@
         // 删除用户列表中所选用户
         _t.$Modal.confirm({
           title: '提示',
-          content: '确认删除所选账号吗？',
+          content: '确认删除所选account number吗？',
           onOk: async function () {
             let tmpArr = []
             for (let i = 0, len = _t.selectedRowData.length, item; i < len; i++) {
               item = _t.selectedRowData[i]
-              // 获取所有需要删除用户的账号
+              // 获取所有需要删除用户的account number
               tmpArr.push(item.id)
             }
             if (!tmpArr.length) {
@@ -347,13 +347,13 @@
             }
             let res = await _t.$store.dispatch('Apps/AccountManagement/account/remove', tmpArr)
             if (!res) {
-              _t.$Message.error('删除账号失败！')
+              _t.$Message.error('删除account number失败！')
               return
             } else if (res.status !== 200) {
               return
             }
-            _t.$Message.info(res.msg || '删除账号成功！')
-            // TODO 更新账号列表
+            _t.$Message.info(res.msg || '删除account number成功！')
+            // TODO 更新account number列表
             _t.initAccountList()
           }
         })
@@ -374,7 +374,7 @@
           tmpArr.push(appItem['app_id'])
         }
         item.apps = tmpArr
-        // TODO 将当前选中行信息存入state
+        // TODO 将当前Selected row information存入state
         _t.$store.commit('Apps/AccountManagement/currentEditAccount/update', item)
         // 切换tab页
         _t.$store.commit('Apps/AccountManagement/currentTab/update', 'edit')

@@ -7,7 +7,7 @@ export default {
   'tab/active': (state, data) => {
     state.currentTabIndex = data + ''
   },
-  // 关闭tab
+  // shut downtab
   'tab/close': (state, data) => {
     let tabPageMap = {
       ...state.tabPageMap
@@ -21,7 +21,7 @@ export default {
           state.currentTabIndex = Object.keys(tabPageMap)[targetIndex - 1] + ''
         }
       }
-      // 执行删除操作
+      // 执行删除operating
       delete tabPageMap[data]
       if (!Object.keys(tabPageMap).length) {
         let tabIndex = '0'

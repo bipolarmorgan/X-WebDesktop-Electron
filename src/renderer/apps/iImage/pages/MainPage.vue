@@ -70,7 +70,7 @@
 
 <template>
   <div class="main-page">
-    <div class="open-img" @click="handleOpenImage" title="打开图片">
+    <div class="open-img" @click="handleOpenImage" title="turn on图片">
       <input type="file" name="image" accept="image/*" ref="input" @change="handleFileChange">
       <Icon class="icon" type="image"></Icon>
     </div>

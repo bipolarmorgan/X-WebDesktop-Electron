@@ -39,7 +39,7 @@ function createWindow () {
 
   mainWindow.loadURL(winURL)
 
-  // 打开调试工具
+  // turn on调试工具
   if (process.env.NODE_ENV === 'development') {
     mainWindow.webContents.openDevTools()
   }

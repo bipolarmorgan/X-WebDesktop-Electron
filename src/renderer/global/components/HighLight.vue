@@ -132,17 +132,17 @@
       <!-- 工具栏 -->
       <div class="header-tool" v-if="tool.length">
         <div v-if="tool.includes('fullScreen')" class="tool-btn" @click.stop="handleAction('fullScreen')">
-          <Tooltip class="tool-tooltip" :placement="placement" content="全屏">
+          <Tooltip class="tool-tooltip" :placement="placement" content="Full screen">
             <Icon class="tool-icon" type="arrow-expand"></Icon>
           </Tooltip>
         </div>
         <div v-if="tool.includes('selectAll')" class="tool-btn" @click.stop="handleAction('selectAll')">
-          <Tooltip class="tool-tooltip" :placement="placement" content="全选">
+          <Tooltip class="tool-tooltip" :placement="placement" content="Select all">
             <Icon class="tool-icon" type="grid"></Icon>
           </Tooltip>
         </div>
         <div v-if="tool.includes('copy')" class="tool-btn" @click.stop="handleAction('copy')">
-          <Tooltip class="tool-tooltip" :placement="placement" content="复制">
+          <Tooltip class="tool-tooltip" :placement="placement" content="Copy">
             <Icon class="tool-icon" type="ios-copy"></Icon>
           </Tooltip>
         </div>
@@ -201,7 +201,7 @@
       },
       nodata: {
         type: String,
-        default: '暂无数据！'
+        default: 'No data！'
       }
     },
     computed: {
@@ -276,7 +276,7 @@
         }
         let handleFullScreen = function () {
           if (!_t.isFullScreen) {
-            // 全屏
+            // full screen
             // let docElm = document.documentElement
             let docElm = _t.$refs['HighLight']
             if (docElm.requestFullscreen) {
@@ -289,7 +289,7 @@
               docElm.msRequestFullscreen()
             }
           } else {
-            // 退出全屏
+            // Logoutfull screen
             if (document.exitFullscreen) {
               document.exitFullscreen()
             } else if (document.mozCancelFullScreen) {

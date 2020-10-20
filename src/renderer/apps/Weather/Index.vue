@@ -35,7 +35,7 @@
     },
     destroyed: function () {
       let _t = this
-      // 卸载store
+      // Uninstallstore
       _t.$store.unregisterModule(['Apps', Store.moduleName])
     }
   }

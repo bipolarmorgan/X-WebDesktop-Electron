@@ -27,10 +27,10 @@
 
 <template>
   <div class="search-panel">
-    <UPanel title="查询">
+    <UPanel title="Inquire">
       <div slot="header-right" class="panel-header">
         <div class="action-btn" @click.stop="handleAction('refresh')">
-          <Tooltip transfer placement="top" content="刷新">
+          <Tooltip transfer placement="top" content="refresh">
             <Icon class="action-icon" type="refresh"></Icon>
           </Tooltip>
         </div>
@@ -43,8 +43,8 @@
           inline
           @submit.native.prevent
         >
-          <FormItem label="日志类别">
-            <Select v-model="searchForm.logType" style="width: 300px;" placeholder="请选择日志类别">
+          <FormItem label="Log Category">
+            <Select v-model="searchForm.logType" style="width: 300px;" placeholder="Please select a log category">
               <Option
                 v-for="item in logTypeList"
                 :value="item.name"
@@ -55,14 +55,14 @@
               </Option>
             </Select>
           </FormItem>
-          <FormItem label="日期">
-            <DatePicker v-model="searchForm.date" type="date" transfer placeholder="请选择日期" style="width: 300px"></DatePicker>
+          <FormItem label="date">
+            <DatePicker v-model="searchForm.date" type="date" transfer placeholder="please choose a date" style="width: 300px"></DatePicker>
           </FormItem>
-          <FormItem label="接口名称">
-            <Input type="text" v-model="searchForm.origin" placeholder="请输入接口名称" style="width: 300px;"></Input>
+          <FormItem label="Interface name ">
+            <Input type="text" v-model="searchForm.origin" placeholder="please enter an Interface name " style="width: 300px;"></Input>
           </FormItem>
-          <FormItem label="请求方式">
-            <Select v-model="searchForm.method" multiple transfer style="width: 300px;" placeholder="请选择请求方式">
+          <FormItem label="Request method">
+            <Select v-model="searchForm.method" multiple transfer style="width: 300px;" placeholder="please choose a Request method">
               <Option
                 v-for="item in methodList"
                 :value="item.value"
@@ -73,36 +73,36 @@
               </Option>
             </Select>
           </FormItem>
-          <FormItem label="响应状态">
-            <Input type="text" v-model="searchForm.status" placeholder="请输入接口响应状态，多个请用英文逗号分隔" style="width: 300px;"></Input>
+          <FormItem label="Response status">
+            <Input type="text" v-model="searchForm.status" placeholder="please enter an interfaceResponse status，Please separate multiples with commas" style="width: 300px;"></Input>
           </FormItem>
-          <FormItem label="报文过滤">
+          <FormItem label="Message filtering">
             <Input
               v-model="searchForm.filterKeywords"
-              placeholder="请输入关键词"
+              placeholder="please enter Keywords"
               @on-enter.stop.prevent="doSearch"
               style="width: 300px;"
             >
             <Select v-model="searchForm.filterType" slot="prepend" style="width: 120px">
-              <Option value="request">request 报文</Option>
-              <Option value="response">respons 报文</Option>
+              <Option value="request">request Message</Option>
+              <Option value="response">response Message</Option>
             </Select>
             </Input>
           </FormItem>
-          <FormItem label="用户过滤">
+          <FormItem label="User filtering">
             <Input
               v-model="searchForm.filterUserKeywords"
-              :placeholder="searchForm.filterUserType === 'account' ? '请输入账号' : '请输入姓名'"
+              :placeholder="searchForm.filterUserType === 'account' ? 'please enter an account number' : 'please enter a Name'"
               @on-enter.stop.prevent="doSearch"
               style="width: 300px;"
             >
             <Select v-model="searchForm.filterUserType" slot="prepend" style="width: 120px">
-              <Option value="account">账号</Option>
-              <Option value="name">姓名</Option>
+              <Option value="account">account number</Option>
+              <Option value="name">Name</Option>
             </Select>
             </Input>
           </FormItem>
-          <!-- FIXME 暂不支持用户级别过滤 -->
+          <!-- FIXME User level filtering is not currently supported -->
           <!--
           <FormItem label="用户级别">
             <CheckboxGroup v-model="searchForm.userType">
@@ -128,7 +128,7 @@
           @submit.native.prevent
         >
           <FormItem>
-            <Button type="primary" :loading="isLoading" @click="doSearch">查询</Button>
+            <Button type="primary" :loading="isLoading" @click="doSearch">Inquire</Button>
           </FormItem>
         </Form>
       </div>
@@ -232,7 +232,7 @@
             key: 'client_ip'
           },
           {
-            title: '上送参数',
+            title: 'Upload parameters',
             key: 'requestQuery',
             render: (h, params) => {
               let method = params.row['method'] || ''
@@ -261,7 +261,7 @@
             }
           },
           {
-            title: '操作',
+            title: 'operating',
             key: 'action',
             render: (h, params) => {
               let btnArr = [
@@ -278,14 +278,14 @@
                       _t.handleAction('detail', params.row)
                     }
                   }
-                }, '详情')
+                }, 'Details')
               ]
               return h('div', btnArr)
             }
           }
         ],
         tableData: [],
-        // 选中行信息
+        // Selected row information
         selectedRowData: [],
         logTypeList: [
           {
@@ -305,21 +305,21 @@
     //   })
     // },
     methods: {
-      // 执行查询
+      // 执行Inquire
       doSearch: function (event) {
         let _t = this
         if (_t.isLoading) {
           return false
         }
         _t.isLoading = true
-        // 查询列表
+        // Inquire列表
         _t.initList()
         return false
       },
       // 初始化列表，获取第一页数据
       initList: function (isResetSearchForm) {
         let _t = this
-        // 处理查询条件
+        // 处理Inquire条件
         if (isResetSearchForm) {
           _t.searchForm = {
             filterKeywords: '',
@@ -334,13 +334,13 @@
             date: new Date()
           }
         }
-        // 调接口，初始化数据
+        // 调interface，初始化数据
         _t.getLogList()
       },
       getLogList: async function () {
         let _t = this
         console.log('xxxx')
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch('Apps/SystemLog/list', {
           ..._t.searchForm,
           date: _t.$utils.filters.formatDate(_t.searchForm.date, 'yyyy-MM-dd')
@@ -351,9 +351,9 @@
         }
         // 处理返回数据
         if (res.data && res.data.list && res.data.list.length) {
-          _t.$Message.success(res.msg || '查询日志列表成功！')
+          _t.$Message.success(res.msg || 'Inquire日志列表成功！')
         } else {
-          _t.$Message.info('暂无数据！')
+          _t.$Message.info('No data！')
         }
         // 更新表格数据
         _t.tableData = res.data.list || []

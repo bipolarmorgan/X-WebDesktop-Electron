@@ -7,7 +7,7 @@ import Api from '../api'
 
 export default {
   'translate': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.doTranslate(payload)
     return res
   }

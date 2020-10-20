@@ -191,7 +191,7 @@
         let _t = this
         _t.isMouseDown = false
       },
-      // 打开应用
+      // turn on应用
       openApp: function () {
         let _t = this
         _t.isMouseDown = false
@@ -199,7 +199,7 @@
         let appInfo = {..._t.info}
         // 广播事件 触发window事件 open
         _t.$utils.bus.$emit('platform/window/trigger', {
-          // 通过桌面图标打开
+          // 通过桌面图标turn on
           action: 'openByDesktopIcon',
           data: {
             appInfo: appInfo
@@ -230,7 +230,7 @@
                 type: 'refresh',
                 style: ''
               },
-              text: '刷新',
+              text: 'refresh',
               enable: true,
               action: {
                 type: 'bus',
@@ -243,7 +243,7 @@
                 type: 'arrow-expand',
                 style: ''
               },
-              text: '全屏',
+              text: 'full screen',
               enable: true,
               action: {
                 type: 'bus',
@@ -256,7 +256,7 @@
                 type: 'arrow-shrink',
                 style: ''
               },
-              text: '取消全屏',
+              text: 'Cancel full screen',
               enable: true,
               action: {
                 type: 'bus',
@@ -269,7 +269,7 @@
                 type: '',
                 style: ''
               },
-              text: '切换壁纸',
+              text: 'Switch wallpaper',
               enable: true,
               action: {
                 type: 'bus',
@@ -282,14 +282,14 @@
                 type: '',
                 style: ''
               },
-              //              text: appInfo.window.status === 'open' ? '关闭' : '打开',
-              text: '打开',
+              //              text: appInfo.window.status === 'open' ? 'shut down' : 'turn on',
+              text: 'turn on',
               enable: true,
               action: {
                 type: 'bus',
                 handler: 'platform/window/trigger',
                 params: {
-                  // 通过桌面图标打开
+                  // 通过桌面图标turn on
                   action: 'toggleWindowByContextMenu',
                   data: {
                     appInfo: appInfo,
@@ -305,7 +305,7 @@
                 type: '',
                 style: ''
               },
-              text: '在新标签页中打开',
+              text: 'In the new tab turn on',
               enable: _t.info.config.window.type === 'iframe' && _t.info.config.app.url,
               action: {
                 type: 'bus',
@@ -318,7 +318,7 @@
                 type: '',
                 style: ''
               },
-              text: '卸载',
+              text: 'Uninstall',
               enable: true,
               action: {
                 type: 'callback',
@@ -328,10 +328,10 @@
                     ..._t.info,
                     config: {
                       ..._t.info.config,
-                      // 解构应用卸载配置
+                      // 解构应用Uninstall配置
                       ..._t.info.config.uninstall
                     },
-                    // 赋值当前操作为 uninstall
+                    // 赋值当前operating为 uninstall
                     action: 'uninstall',
                     // 是否已安装过
                     installed: true
@@ -347,7 +347,7 @@
       // FIXME 拖拽处理，可以考虑实现选区拖拽
       handleDragStart: function (event) {
         let _t = this
-        // 广播事件，关闭菜单
+        // 广播事件，shut down菜单
         _t.$utils.bus.$emit('platform/contextMenu/hide')
         let appInfo = _t.info
         // 鼠标点击位置相对拖拽对象位置

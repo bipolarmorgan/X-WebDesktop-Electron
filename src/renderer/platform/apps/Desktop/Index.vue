@@ -297,17 +297,17 @@
       handleGrids: function (direction) {
         let _t = this
         direction = direction || 'top-bottom-left-right'
-        // 默认从上往下，从左往右
+        // 默认From top to bottom, from left to right
         /*
-         * 1.从上往下，从左往右 top-bottom-left-right
-         * 2.从上往下，从右往左 top-bottom-right-left
-         * 3.从下往上，从左往右 bottom-top-left-right
-         * 4.从下往上，从右往左 bottom-top-right-left
+         * 1.From top to bottom, from left to right top-bottom-left-right
+         * 2.From top to bottom, from right to left top-bottom-right-left
+         * 3.From bottom to top, from left to right bottom-top-left-right
+         * 4.From bottom to top, from right to left bottom-top-right-left
          *
-         * 5.从左往右，从上往下 left-right-top-bottom
-         * 6.从左往右，从下往上 left-right-bottom-top
-         * 7.从右往左，从上往下 right-left-top-bottom
-         * 8.从右往左，从下往上 right-left-bottom-top
+         * 5.From left to right, from top to bottom left-right-top-bottom
+         * 6.From left to right, from bottom to top left-right-bottom-top
+         * 7.From right to left, from top to bottom right-left-top-bottom
+         * 8.From right to left, from bottom to top right-left-bottom-top
          * */
         // 1.通过窗口宽高、格子宽高，计算格子坐标
         let gridArr = []
@@ -320,7 +320,7 @@
         let yNum = Math.floor(height / itemWidthHeight)
         switch (direction) {
           case 'top-bottom-left-right':
-            // 从上往下，从左往右
+            // From top to bottom, from left to right
             for (let i = 0; i < xNum; i++) {
               let yArr = []
               for (let j = 0; j < yNum; j++) {
@@ -341,7 +341,7 @@
             }
             break
           case 'top-bottom-right-left':
-            // 从上往下，从右往左
+            // From top to bottom, from right to left
             for (let i = xNum; i > 0; i--) {
               let yArr = []
               for (let j = 0; j < yNum; j++) {
@@ -362,7 +362,7 @@
             }
             break
           case 'bottom-top-left-right':
-            // 从下往上，从左往右
+            // From bottom to top, from left to right
             for (let i = 0; i < xNum; i++) {
               let yArr = []
               for (let j = yNum; j > 0; j--) {
@@ -383,7 +383,7 @@
             }
             break
           case 'bottom-top-right-left':
-            // 从下往上，从右往左
+            // From bottom to top, from right to left
             for (let i = xNum; i > 0; i--) {
               let yArr = []
               for (let j = yNum; j > 0; j--) {
@@ -404,7 +404,7 @@
             }
             break
           case 'left-right-top-bottom':
-            // 从左往右，从上往下
+            // From left to right, from top to bottom
             for (let j = 0; j < yNum; j++) {
               let xArr = []
               for (let i = 0; i < xNum; i++) {
@@ -425,7 +425,7 @@
             }
             break
           case 'left-right-bottom-top':
-            // 从左往右，从下往上
+            // From left to right, from bottom to top
             for (let j = yNum; j > 0; j--) {
               let xArr = []
               for (let i = 0; i < xNum; i++) {
@@ -446,7 +446,7 @@
             }
             break
           case 'right-left-top-bottom':
-            // 从右往左，从上往下
+            // From right to left, from top to bottom
             for (let j = 0; j < yNum; j++) {
               let xArr = []
               for (let i = xNum; i > 0; i--) {
@@ -467,7 +467,7 @@
             }
             break
           case 'right-left-bottom-top':
-            // 从右往左，从下往上
+            // From right to left, from bottom to top
             for (let j = yNum; j > 0; j--) {
               let xArr = []
               for (let i = xNum; i > 0; i--) {
@@ -608,15 +608,15 @@
       handleGridLayout: function (direction) {
         let _t = this
         /*
-         * 1.从上往下，从左往右 top-bottom-left-right
-         * 2.从上往下，从右往左 top-bottom-right-left
-         * 3.从下往上，从左往右 bottom-top-left-right
-         * 4.从下往上，从右往左 bottom-top-right-left
+         * 1.From top to bottom, from left to right top-bottom-left-right
+         * 2.From top to bottom, from right to left top-bottom-right-left
+         * 3.From bottom to top, from left to right bottom-top-left-right
+         * 4.From bottom to top, from right to left bottom-top-right-left
          *
-         * 5.从左往右，从上往下 left-right-top-bottom
-         * 6.从左往右，从下往上 left-right-bottom-top
-         * 7.从右往左，从上往下 right-left-top-bottom
-         * 8.从右往左，从下往上 right-left-bottom-top
+         * 5.From left to right, from top to bottom left-right-top-bottom
+         * 6.From left to right, from bottom to top left-right-bottom-top
+         * 7.From right to left, from top to bottom right-left-top-bottom
+         * 8.From right to left, from bottom to top right-left-bottom-top
          * */
         if (!_t.directionArr.includes(direction)) {
           direction = _t.directionArr[0]
@@ -657,10 +657,10 @@
           }
           return tmpArr
         }
-        // 处理已打开窗口层级
+        // 处理已turn on窗口层级
         let handleOpenedWindowZIndex = function (iconList, currentAppIndex) {
           let defZIndex = 2000
-          // 查找已打开的window的index
+          // 查找已turn on的window的index
           let openedWindowIndexArr = findAllIndex(iconList, (item) => item.config.window.status === 'open' && item.config.window.size !== 'min')
           // 处理z-index
           let len = openedWindowIndexArr.length
@@ -668,11 +668,11 @@
             if (len === 1) {
               iconList[currentAppIndex].config['window']['style']['z-index'] = defZIndex
             } else {
-              // 1.先处理当前打开的window，放到最大
+              // 1.先处理当前turn on的window，放到最大
               iconList[currentAppIndex].config['window']['style']['z-index'] = defZIndex + len - 1
-              // 2.移除当前打开的window
+              // 2.移除当前turn on的window
               openedWindowIndexArr = openedWindowIndexArr.filter((_appIndex) => _appIndex !== currentAppIndex)
-              // 3.再处理其他已打开的window
+              // 3.再处理其他已turn on的window
               for (let i = 0, len = openedWindowIndexArr.length, index; i < len; i++) {
                 index = openedWindowIndexArr[i]
                 iconList[index].config['window']['style']['z-index'] = defZIndex + i
@@ -687,7 +687,7 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -708,7 +708,7 @@
             // 处理窗口层级，将当前窗口层级更新到最大
             iconList = handleOpenedWindowZIndex(iconList, currentAppIndex)
           } else if (appInfo.config.window.status === 'open') {
-            // 判断当前操作的窗口是否是最小化状态
+            // 判断当前operating的窗口是否是最小化状态
             if (appInfo.config.window.size === 'min') {
               // 还原窗口
               iconList[currentAppIndex].config['window']['size'] = oldSize
@@ -724,7 +724,7 @@
               iconList[currentAppIndex].config['window']['oldStyle'] = currentStyle
               iconList[currentAppIndex].config['window']['oldSize'] = currentSize
               // 判断当前窗口层级是否最大，不是最大则切换到最大，是就最小化
-              // 查找已打开的window的index
+              // 查找已turn on的window的index
               let openedWindowIndexArr = findAllIndex(iconList, (item) => item.config.window.status === 'open' && item.config.window.size !== 'min')
               // 查找层级
               let zIndexArr = []
@@ -766,9 +766,9 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 回调操作
+          // 回调operating
           let callback = null
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -826,7 +826,7 @@
               iconList[currentAppIndex].config['window']['size'] = 'max'
               break
             case 'close':
-              // 如果是安装/卸载窗口的关闭操作则从iconList中移除
+              // 如果是安装/Uninstall窗口的shut downoperating则从iconList中移除
               if (appInfo.hasOwnProperty('action') && ['install', 'uninstall'].includes(appInfo.action)) {
                 if (appInfo.hasOwnProperty('installed') && appInfo.installed) {
                   iconList = iconList.map(item => {
@@ -848,7 +848,7 @@
                 /*
                 callback = () => {
                   _t.$nextTick(function () {
-                    // 刷新用户应用列表
+                    // refresh用户应用列表
                     _t.$utils.bus.$emit('Admin/appData/refresh')
                   })
                 }
@@ -874,7 +874,7 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -891,7 +891,7 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -910,7 +910,7 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -934,7 +934,7 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -962,7 +962,7 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -982,7 +982,7 @@
           if (!Object.keys(appInfo).length || !appInfo.config.window) {
             return
           }
-          // 当前操作的窗口索引
+          // 当前operating的窗口索引
           let currentAppIndex = findAppIndex(iconList, (item) => item.config.app.name === appInfo.config.app.name)
           if (currentAppIndex < 0) {
             return
@@ -1012,7 +1012,7 @@
               // 处理窗口层级，将当前窗口层级更新到最大
               iconList = handleOpenedWindowZIndex(iconList, currentAppIndex)
             } else if (appInfo.config.window.status === 'open') {
-              // 判断当前操作的窗口是否是最小化状态
+              // 判断当前operating的窗口是否是最小化状态
               if (appInfo.config.window.size === 'min') {
                 // 还原窗口
                 iconList[currentAppIndex].config['window']['size'] = oldSize
@@ -1028,7 +1028,7 @@
                 iconList[currentAppIndex].config['window']['oldStyle'] = currentStyle
                 iconList[currentAppIndex].config['window']['oldSize'] = currentSize
                 // 判断当前窗口层级是否最大，不是最大则切换到最大，是就最小化
-                // 查找已打开的window的index
+                // 查找已turn on的window的index
                 let openedWindowIndexArr = findAllIndex(iconList, (item) => item.config.window.status === 'open' && item.config.window.size !== 'min')
                 // 查找层级
                 let zIndexArr = []
@@ -1115,12 +1115,12 @@
             break
         }
       },
-      // 处理应用安装/卸载
+      // 处理应用安装/Uninstall
       handleAppInstallOrUninstall: function (tmpInfo) {
         let _t = this
         let appInfo = tmpInfo.data.appInfo
         console.log('appInfo', appInfo)
-        // 打开安装/卸载界面
+        // turn on安装/Uninstall界面
         let openWindow = function () {
           let iconList = [..._t.appData.iconList]
           // 查找单个索引
@@ -1138,9 +1138,9 @@
           _t.handleWindowTrigger(tmpInfo, iconList)
         }
         console.log('tmpInfo.action', tmpInfo.action)
-        // 根据当前操作执行不同逻辑
+        // 根据当前operating执行不同逻辑
         switch (tmpInfo.action) {
-          // 打开安装/卸载界面
+          // turn on安装/Uninstall界面
           case 'openByInstall':
           case 'openByUninstall':
             openWindow()
@@ -1149,39 +1149,39 @@
           case 'doInstall':
             _t.doApplicationInstall(appInfo, tmpInfo.data.callback)
             break
-          // 执行卸载
+          // 执行Uninstall
           case 'doUninstall':
             _t.doApplicationUninstall(appInfo, tmpInfo.data.callback)
             break
         }
       },
-      // 执行安装操作
+      // 执行安装operating
       doApplicationInstall: async function (appInfo, callback) {
         let _t = this
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch('Platform/Desktop/application/install', {
           id: appInfo.appID
         })
         console.log('doApplicationInstall', res)
         if (!res || res.status !== 200) {
-          // _t.$Message.error('安装失败！')
+          // _t.$Message.error('installation failed！')
           callback && callback(false)
           return
         }
-        _t.$Message.info(res.msg || '安装成功！')
+        _t.$Message.info(res.msg || 'Successful installation！')
         callback && callback(true, res.msg)
         /*
         _t.$nextTick(function () {
-          // 刷新用户应用列表
+          // refresh用户应用列表
           _t.$utils.bus.$emit('Admin/appData/refresh')
         })
         */
       },
-      // 执行卸载操作
+      // 执行Uninstalloperating
       doApplicationUninstall: async function (appInfo, callback) {
         let _t = this
         console.log('appInfo', appInfo)
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch('Platform/Desktop/application/uninstall', {
           // 用户应用列表索引ID
           id: appInfo.id,
@@ -1192,14 +1192,14 @@
         })
         console.log('doApplicationUninstall', res)
         if (!res || res.status !== 200) {
-          // _t.$Message.error('卸载失败！')
+          // _t.$Message.error('Uninstallation failed！')
           callback && callback(false)
           return
         }
-        _t.$Message.info(res.msg || '安装成功！')
+        _t.$Message.info(res.msg || 'Successful installation！')
         callback && callback(true, res.msg)
         _t.$nextTick(function () {
-          // 刷新用户应用列表
+          // refresh用户应用列表
           _t.$utils.bus.$emit('Admin/appData/refresh')
         })
       },
@@ -1224,7 +1224,7 @@
           _t.handleGridLayout(direction)
         }
       })
-      // 监听 window 操作
+      // 监听 window operating
       _t.$utils.bus.$on('platform/window/trigger', function (tmpInfo) {
         _t.handleWindowTrigger(tmpInfo)
       })
@@ -1236,7 +1236,7 @@
       _t.$utils.bus.$on('platform/application/install', function (tmpInfo) {
         _t.handleAppInstallOrUninstall(tmpInfo)
       })
-      // 监听应用卸载
+      // 监听应用Uninstall
       _t.$utils.bus.$on('platform/application/uninstall', function (tmpInfo) {
         _t.handleAppInstallOrUninstall(tmpInfo)
       })

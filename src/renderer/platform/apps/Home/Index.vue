@@ -55,7 +55,7 @@
                 type: 'refresh',
                 style: ''
               },
-              text: '刷新',
+              text: 'refresh',
               enable: true,
               action: {
                 type: 'bus',
@@ -68,7 +68,7 @@
                 type: 'arrow-expand',
                 style: ''
               },
-              text: '全屏',
+              text: 'FullScreen',
               enable: true,
               action: {
                 type: 'bus',
@@ -81,7 +81,7 @@
                 type: 'arrow-shrink',
                 style: ''
               },
-              text: '取消全屏',
+              text: 'Cancel full screen',
               enable: true,
               action: {
                 type: 'bus',
@@ -94,7 +94,7 @@
                 type: '',
                 style: ''
               },
-              text: '切换壁纸',
+              text: 'Switch wallpaper',
               enable: true,
               action: {
                 type: 'bus',

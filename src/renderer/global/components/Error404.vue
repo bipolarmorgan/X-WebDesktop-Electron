@@ -91,10 +91,10 @@
     <div class="error-404-code">
       <div>4</div><div>0</div><div>4</div>
     </div>
-    <div class="error-404-text">该页面不存在(´･ω･`)</div>
+    <div class="error-404-text">This page does not exist (ERROR 404)</div>
     <div class="error-404-btn">
       <Button type="dashed" shape="circle">
-        <router-link :to="{ name: 'platform.index'}">返回首页</router-link>
+        <router-link :to="{ name: 'platform.index'}">Back to homepage</router-link>
       </Button>
     </div>
   </div>

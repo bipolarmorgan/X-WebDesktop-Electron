@@ -12,6 +12,7 @@
     position: relative;
     user-select: none;
     &.task-bar-icon-pinned {
+      //something
     }
 
     .task-bar-preview {
@@ -216,7 +217,7 @@
     @mouseenter.stop.prevent="onIconMouseOver"
     @mouseleave.stop.prevent="onIconMouseOut"
     -->
-    <!-- 预览图 -->
+    <!-- preview -->
     <div class="task-bar-preview"
       v-show="previewImg"
     >
@@ -294,32 +295,32 @@
       onIconMouseUp: function () {
         let _t = this
         _t.isMouseDown = false
-        // 清空预览图
+        // 清空preview
         _t.previewImg = null
         _t.targetWindow = null
         // 应用数据
         let appInfo = {..._t.info}
         // 广播事件 触发window事件 open
         _t.$utils.bus.$emit('platform/window/trigger', {
-          // 通过任务栏图标打开
+          // 通过任务栏图标turn on
           action: 'openByTaskBarIcon',
           data: {
             appInfo: appInfo
           }
         })
       },
-      // 打开当前窗口
+      // turn on当前窗口
       onPreviewMouseUp: function () {
         let _t = this
-        // FIXME 【BUG】当存在两个窗口时，当前打开的窗口层级不正确
-        // 清空预览图
+        // FIXME 【BUG】当存在两个窗口时，当前turn on的窗口层级不正确
+        // 清空preview
         _t.previewImg = null
         _t.targetWindow = null
         // 应用数据
         let appInfo = {..._t.info}
         // 广播事件 触发window事件
         _t.$utils.bus.$emit('platform/window/trigger', {
-          // 通过预览图打开窗口
+          // 通过previewturn on窗口
           action: 'openByPreviewThumb',
           data: {
             appInfo: appInfo
@@ -329,7 +330,7 @@
       // 右键菜单
       onIconRightClick: function (event) {
         let _t = this
-        // 清空预览图
+        // 清空preview
         _t.previewImg = null
         _t.targetWindow = null
         _t.$nextTick(function () {
@@ -354,7 +355,7 @@
                   type: 'refresh',
                   style: ''
                 },
-                text: '刷新',
+                text: 'refresh',
                 enable: true,
                 action: {
                   type: 'bus',
@@ -367,7 +368,7 @@
                   type: 'arrow-expand',
                   style: ''
                 },
-                text: '全屏',
+                text: 'full screen',
                 enable: true,
                 action: {
                   type: 'bus',
@@ -380,7 +381,7 @@
                   type: 'arrow-shrink',
                   style: ''
                 },
-                text: '取消全屏',
+                text: 'Cancel full screen',
                 enable: true,
                 action: {
                   type: 'bus',
@@ -393,7 +394,7 @@
                   type: '',
                   style: ''
                 },
-                text: '切换壁纸',
+                text: 'Switch wallpaper',
                 enable: true,
                 action: {
                   type: 'bus',
@@ -406,13 +407,13 @@
                   type: '',
                   style: ''
                 },
-                text: appInfo.config.window.status === 'open' ? '关闭' : '打开',
+                text: appInfo.config.window.status === 'open' ? 'shut down' : 'turn on',
                 enable: true,
                 action: {
                   type: 'bus',
                   handler: 'platform/window/trigger',
                   params: {
-                    // 通过桌面图标打开
+                    // 通过桌面图标turn on
                     action: 'toggleWindowByContextMenu',
                     data: {
                       appInfo: appInfo,
@@ -427,7 +428,7 @@
                   type: '',
                   style: ''
                 },
-                text: '在新标签页中打开',
+                text: 'In the new tab turn on',
                 enable: _t.info.config.window.type === 'iframe' && _t.info.config.app.url,
                 action: {
                   type: 'bus',
@@ -442,7 +443,7 @@
                       type: '',
                       style: ''
                     },
-                    text: '卸载',
+                    text: 'Uninstall',
                     enable: true,
                     action: {
                       type: 'callback',
@@ -452,10 +453,10 @@
                           ..._t.info,
                           config: {
                             ..._t.info.config,
-                            // 解构应用卸载配置
+                            // 解构应用Uninstall配置
                             ..._t.info.config.uninstall
                           },
-                          // 赋值当前操作为 uninstall
+                          // 赋值当前operating为 uninstall
                           action: 'uninstall',
                           // 是否已安装过
                           installed: true
@@ -521,9 +522,9 @@
             console.warn('html2canvas render error!', error)
           })
         }
-        // 清空预览图
+        // 清空preview
         _t.previewImg = null
-        // 判断应用是否打开
+        // 判断应用是否turn on
         if (appInfo.config.window.status !== 'open') {
           return
         }
@@ -566,7 +567,7 @@
           let appInfo = {..._t.info}
           // 广播事件 触发window事件
           _t.$utils.bus.$emit('platform/window/trigger', {
-            // 预览缩略图关闭
+            // 预览缩略图shut down
             action: 'previewThumbHide',
             data: {
               appInfo: appInfo
@@ -575,7 +576,7 @@
           */
         }
       },
-      // 预览当前窗口 打开
+      // 预览当前窗口 turn on
       onPreviewMouseOver: function () {
         let _t = this
         let appInfo = {..._t.info}
@@ -588,7 +589,7 @@
           }
         })
       },
-      // 预览当前窗口 关闭
+      // 预览当前窗口 shut down
       onPreviewMouseOut: function () {
         let _t = this
         let appInfo = {..._t.info}

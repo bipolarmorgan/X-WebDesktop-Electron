@@ -6,7 +6,7 @@
 
 export default function (ctx, appInfo) {
   let _t = ctx
-  // 广播事件 打开安装界面
+  // 广播事件 turn on安装界面
   _t.$utils.bus.$emit('platform/application/install', {
     action: 'openByInstall',
     data: {

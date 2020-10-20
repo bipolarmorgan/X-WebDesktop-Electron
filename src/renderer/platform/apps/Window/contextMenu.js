@@ -7,7 +7,7 @@
 export default [
   {
     key: 'refresh',
-    text: '刷新',
+    text: 'refresh',
     handler: function () {
       console.log('Admin refresh...')
     }

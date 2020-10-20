@@ -75,8 +75,8 @@
           <div class="loading-text">安装中...</div>
         </Spin>
       </div>
-      <div class="complete" v-show="isComplete">{{ isSuccess ? '安装成功！' : '安装失败！' }}</div>
-      <Button class="button" type="primary" v-show="!isLoading" @click="handleInstall">立即安装</Button>
+      <div class="complete" v-show="isComplete">{{ isSuccess ? 'Successful installation！' : 'installation failed！' }}</div>
+      <Button class="button" type="primary" v-show="!isLoading" @click="handleInstall">install now</Button>
     </div>
   </div>
 </template>

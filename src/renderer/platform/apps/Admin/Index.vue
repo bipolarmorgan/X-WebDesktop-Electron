@@ -73,7 +73,7 @@
                 type: 'refresh',
                 style: ''
               },
-              text: '刷新',
+              text: 'refresh',
               enable: true,
               action: {
                 type: 'bus',
@@ -86,7 +86,7 @@
                 type: '',
                 style: ''
               },
-              text: '排序方式',
+              text: 'Sort by',
               enable: true,
               children: [
                 {
@@ -95,7 +95,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从上往下，从左往右',
+                  text: 'From top to bottom, from left to right',
                   enable: true,
                   style: {},
                   action: {
@@ -110,7 +110,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从上往下，从右往左',
+                  text: 'From top to bottom, from right to left',
                   enable: true,
                   style: {},
                   action: {
@@ -125,7 +125,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从下往上，从左往右',
+                  text: 'From bottom to top, from left to right',
                   enable: true,
                   style: {},
                   action: {
@@ -140,7 +140,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从下往上，从右往左',
+                  text: 'From bottom to top, from right to left',
                   enable: true,
                   style: {},
                   action: {
@@ -155,7 +155,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从左往右，从上往下',
+                  text: 'From left to right, from top to bottom',
                   enable: true,
                   style: {},
                   action: {
@@ -170,7 +170,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从左往右，从下往上',
+                  text: 'From left to right, from bottom to top',
                   enable: true,
                   style: {},
                   action: {
@@ -185,7 +185,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从右往左，从上往下',
+                  text: 'From right to left, from top to bottom',
                   enable: true,
                   style: {},
                   action: {
@@ -200,7 +200,7 @@
                     type: '',
                     style: ''
                   },
-                  text: '从右往左，从下往上',
+                  text: 'From right to left, from bottom to top',
                   enable: true,
                   style: {},
                   action: {
@@ -221,7 +221,7 @@
                 type: 'arrow-expand',
                 style: ''
               },
-              text: '全屏',
+              text: 'full screen',
               enable: true,
               action: {
                 type: 'bus',
@@ -234,7 +234,7 @@
                 type: 'arrow-shrink',
                 style: ''
               },
-              text: '取消全屏',
+              text: 'Cancel full screen',
               enable: true,
               action: {
                 type: 'bus',
@@ -247,7 +247,7 @@
                 type: '',
                 style: ''
               },
-              text: '切换壁纸',
+              text: 'Switch wallpaper',
               enable: true,
               action: {
                 type: 'bus',
@@ -265,14 +265,14 @@
         // 分发action，获取当前登录用户基本信息
         let res = await _t.$store.dispatch(_t.$utils.store.getType('Admin/user/BaseInfo', 'Platform'))
         if (!res) {
-          _t.$Message.error('获取用户基本信息失败！')
+          _t.$Message.error('Failed to obtain basic user information！')
           return
         } else if (res.status !== 200) {
           return
         }
         // 处理返回数据
         if (res.data) {
-          _t.$Message.success(res.msg || '获取用户基本信息成功！')
+          _t.$Message.success(res.msg || 'Succeeded in obtaining basic user information！')
           let userInfo = res.data
           // 分发mutations，更新用户基本信息
           _t.$store.commit(_t.$utils.store.getType('userInfo/update', 'Platform'), {
@@ -280,7 +280,7 @@
             ...userInfo
           })
         } else {
-          _t.$Message.info('暂无数据！')
+          _t.$Message.info('No data！')
         }
       },
       // 获取用户应用数据
@@ -289,7 +289,7 @@
         // TODO 1.分发action，获取用户应用数据
         let res = await _t.$store.dispatch(_t.$utils.store.getType('Admin/user/application/list', 'Platform'))
         if (!res || res.status !== 200) {
-          _t.$Message.error('获取用户应用列表失败')
+          _t.$Message.error('Failed to get user application list')
           return
         }
         let appData = {
@@ -299,7 +299,7 @@
         }
         // 处理返回数据
         if (res.data && res.data.list && res.data.list.length) {
-          _t.$Message.success(res.msg || '获取用户应用列表成功！')
+          _t.$Message.success(res.msg || 'Get the user application list successfully！')
           appData.list = res.data.list
           // 处理iconList
           appData.list.map(item => {
@@ -310,7 +310,7 @@
             })
           })
         } else {
-          _t.$Message.info('暂无数据！')
+          _t.$Message.info('No data！')
         }
         let _appData = JSON.parse(JSON.stringify(appData))
         // 分发mutations，更新用户应用数据
@@ -330,7 +330,7 @@
         _t.getBaseInfo()
         // FIXME 获取用户应用数据
         _t.getUserAppData()
-        // 监听事件，刷新用户应用数据
+        // 监听事件，refresh用户应用数据
         _t.$utils.bus.$on('Admin/appData/refresh', function () {
           _t.getUserAppData()
         })

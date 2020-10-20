@@ -5,6 +5,6 @@
 export default {
   // 当前激活的tab
   currentTab: '',
-  // 当前编辑的账号
+  // 当前编辑的account number
   currentEditAccount: {}
 }

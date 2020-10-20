@@ -81,7 +81,7 @@
       <div class="loading" v-show="isLoading">
         <Spin fix>
           <Icon class="loading-icon" type="load-c" size=18></Icon>
-          <div class="loading-text">安装中...</div>
+          <div class="loading-text">installing...</div>
         </Spin>
       </div>
       <div
@@ -91,7 +91,7 @@
         <Icon :type="isSuccess ? 'checkmark-circled' : 'close-circled'"></Icon>
         {{ completeMsg }}
       </div>
-      <Button class="button" type="primary" :disabled="isSuccess" v-show="!isLoading" @click="handleInstall">立即安装</Button>
+      <Button class="button" type="primary" :disabled="isSuccess" v-show="!isLoading" @click="handleInstall">install now</Button>
     </div>
   </div>
 </template>
@@ -130,7 +130,7 @@
               _t.isLoading = false
               _t.isComplete = true
               _t.isSuccess = isSuccess
-              _t.completeMsg = msg || (isSuccess ? '安装成功！' : '安装失败！')
+              _t.completeMsg = msg || (isSuccess ? 'Successful installation！' : 'installation failed！')
             }
           }
         })

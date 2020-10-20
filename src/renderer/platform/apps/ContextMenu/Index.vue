@@ -155,7 +155,7 @@
     },
     created: function () {
       let _t = this
-      // TODO 监听菜单打开
+      // TODO 监听菜单turn on
       _t.$utils.bus.$on('platform/contextMenu/show', function (val) {
         // 广播事件
         _t.$utils.bus.$emit('platform/startMenu/hide')

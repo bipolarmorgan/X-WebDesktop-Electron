@@ -262,10 +262,10 @@
           {
             name: 'uninstall',
             icon: '',
-            title: '卸载',
+            title: 'Uninstall',
             action: {
               name: 'uninstall',
-              text: '卸载'
+              text: 'Uninstall'
             }
           }
         ],
@@ -293,23 +293,23 @@
       // 获取应用分类列表
       getCategoryList: async function (parent) {
         let _t = this
-        // 父分类ID，默认查询父节点为0的一级分类
+        // 父分类ID，默认Inquire父节点为0的一级分类
         parent = parent || 0
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch('Apps/ApplicationMarket/category/list', {
           parent: parent
         })
         if (!res) {
-          _t.$Message.error('查询应用分类列表失败！')
+          _t.$Message.error('Inquire应用分类列表失败！')
           return
         } else if (res.status !== 200) {
           return
         }
         // 处理返回数据
         if (res.data.count && res.data.list && res.data.list.length) {
-          _t.$Message.success(res.msg || '查询应用分类列表成功！')
+          _t.$Message.success(res.msg || 'Inquire应用分类列表成功！')
         } else {
-          _t.$Message.info('暂无数据！')
+          _t.$Message.info('No data！')
         }
         // 更新应用分类列表数据
         _t.categoryList = res.data.list || []
@@ -338,19 +338,19 @@
             }
             break
         }
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch(path, payload)
         if (!res) {
-          _t.$Message.error('查询应用列表失败！')
+          _t.$Message.error('Inquire应用列表失败！')
           return
         } else if (res.status !== 200) {
           return
         }
         // 处理返回数据
         if (res.data.count && res.data.list && res.data.list.length) {
-          _t.$Message.success(res.msg || '查询应用列表成功！')
+          _t.$Message.success(res.msg || 'Inquire应用列表成功！')
         } else {
-          _t.$Message.info('暂无数据！')
+          _t.$Message.info('No data！')
         }
         // 更新应用列表数据
         let applicationList = res.data.list || []
@@ -366,7 +366,7 @@
         // 获取当前分类下的应用列表
         _t.getApplicationList()
       },
-      // 处理应用安装/卸载
+      // 处理应用安装/Uninstall
       handleAction: function (appInfo, action) {
         let _t = this
         // 处理安装
@@ -392,7 +392,7 @@
               },
               // 应用ID
               appID: appInfo.id,
-              // 赋值当前操作为 install
+              // 赋值当前operating为 install
               action: 'install',
               // 是否已安装过
               installed: false
@@ -409,27 +409,27 @@
               },
               // 应用ID
               appID: appInfo.id,
-              // 赋值当前操作为 install
+              // 赋值当前operating为 install
               action: 'install',
               // 是否已安装过
               installed: true
             }
           }
-          // 调用安装工具，打开安装界面
+          // 调用安装工具，turn on安装界面
           _t.$utils.install(_t, installInfo)
         }
-        // 处理卸载
+        // 处理Uninstall
         let handleUninstall = function () {
-          // 调用卸载工具，打开卸载界面
+          // 调用Uninstall工具，turn onUninstall界面
           _t.$utils.uninstall(_t, {
             // 解构应用基础配置
             ...appInfo,
             config: {
               ...appInfo.config,
-              // 解构应用卸载配置
+              // 解构应用Uninstall配置
               ...appInfo.config.uninstall
             },
-            // 赋值当前操作为 uninstall
+            // 赋值当前operating为 uninstall
             action: 'uninstall',
             // 是否已安装过
             installed: true

@@ -7,7 +7,7 @@ import Api from '../api'
 
 export default {
   'list': async ({ commit }, payload) => {
-    // 调接口
+    // 调interface
     let res = await Api.getLogList(payload)
     return res
   }

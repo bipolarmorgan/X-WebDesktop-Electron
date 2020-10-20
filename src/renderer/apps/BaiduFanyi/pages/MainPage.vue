@@ -304,7 +304,7 @@
         let salt = (new Date()).getTime()
         let str = _t.appid + _t.formData.query + salt + _t.key
         let sign = MD5(str)
-        // 分发action，调接口
+        // 分发action，调interface
         let res = await _t.$store.dispatch('Apps/BaiduFanyi/translate', {
           from: _t.formData.from,
           to: _t.formData.to,

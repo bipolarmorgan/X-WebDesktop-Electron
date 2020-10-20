@@ -67,12 +67,12 @@
         <div class="login-modal-body">
           <Form class="login-form" ref="signInForm" :model="formData" :rules="signInFormRules">
             <Form-item prop="account">
-              <Input type="text" v-model="formData.account" placeholder="请输入用户名">
+              <Input type="text" v-model="formData.account" placeholder="please enter a username">
               <Icon type="ios-person-outline" slot="prepend" style="font-size: 16px;"></Icon>
               </Input>
             </Form-item>
             <Form-item prop="password">
-              <Input :type="passwordInputType" v-model="formData.password" placeholder="请输入密码" @on-enter="handleSignIn">
+              <Input :type="passwordInputType" v-model="formData.password" placeholder="please enter a password" @on-enter="handleSignIn">
               <Icon type="ios-locked-outline" slot="prepend" style="font-size: 16px;"></Icon>
               <Button slot="append" :icon="passwordInputType === 'password' ? 'eye-disabled' : 'eye'" style="font-size: 16px; line-height: 1;" @click="showPassword"></Button>
               </Input>
@@ -101,14 +101,14 @@
         },
         signInFormRules: {
           account: [
-            { required: true, message: '请填写用户名', trigger: 'change' }
+            { required: true, message: 'Please fill out username', trigger: 'change' }
           ],
           password: [
-            { required: true, message: '请填写密码', trigger: 'change' },
-            { type: 'string', min: 6, max: 16, message: '密码长度必须在6到16位之间', trigger: 'change' }
+            { required: true, message: 'Please fill out password', trigger: 'change' },
+            { type: 'string', min: 6, max: 16, message: 'password length must be between 6 and 16 ', trigger: 'change' }
           ]
         },
-        // 密码输入框类型
+        // password输入框类型
         passwordInputType: 'password'
       }
     },
@@ -123,7 +123,7 @@
       },
       handleSignIn: async function () {
         let _t = this
-        // 调用接口执行登录
+        // 调用interface执行登录
         let types = _t.$utils.store.getType('Login/doSignIn', 'Platform')
         console.log('types', types)
         let res = await _t.$store.dispatch(types, {
@@ -137,7 +137,7 @@
         let tokenKey = _t.$Config.Cookie.getItem('token')
         let token = res.data[tokenKey] || null
         if (userInfo && token) {
-          _t.$Message.success('登录成功！')
+          _t.$Message.success('login successful！')
           // TODO 用户信息存入state；token存入sessionStorage；路由跳转
           _t.$store.commit(_t.$utils.store.getType('userInfo/update', 'Platform'), {
             ...userInfo,
@@ -146,7 +146,7 @@
           let pathKey = process && process.env.NODE_ENV !== 'production' ? 'development' : 'production'
           _t.$Cookies.set(tokenKey, token, { path: _t.$Config.Cookie.path[pathKey] })
         } else {
-          _t.$Message.error('登录失败，接口返回数据异常！')
+          _t.$Message.error('Login failed，interface Returned data exception！')
         }
       },
       showPassword: function () {

@@ -92,7 +92,7 @@
     methods: {
       init: function () {
         let _t = this
-        // 切换壁纸
+        // Switch wallpaper
         _t.doSwitch()
       },
       doSwitch: function () {

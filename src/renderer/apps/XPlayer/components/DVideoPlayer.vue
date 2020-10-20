@@ -71,7 +71,7 @@
           // 右键菜单
           contextmenu: [
             {
-              text: '打开视频',
+              text: 'Open video',
               click: (player) => {
                 console.log(player)
               }

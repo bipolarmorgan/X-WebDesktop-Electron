@@ -3,7 +3,7 @@
  */
 
 export default {
-  // 日期格式化
+  // date格式化
   formatDate: (time, fmt = 'yyyy-MM-dd hh:mm') => {
     // console.log('time', time, typeof time)
     if (time instanceof Date) {

@@ -7,7 +7,7 @@ export default {
   'currentTab/update': (state, data) => {
     state.currentTab = data
   },
-  // 更新当前编辑的账号
+  // 更新当前编辑的account number
   'currentEditAccount/update': (state, data) => {
     state.currentEditAccount = data
   }
